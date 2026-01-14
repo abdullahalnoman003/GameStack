@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
+import NotAvailable from "../components/NotAvailable";
 const router = createBrowserRouter([
 {
     path:"/",
@@ -8,7 +9,11 @@ const router = createBrowserRouter([
         {
             index: true,
             element:<></>
-        }
+        },
+        {
+            path:"/*",
+            element:<NotAvailable></NotAvailable>
+        },
     ]
 }
 ])
