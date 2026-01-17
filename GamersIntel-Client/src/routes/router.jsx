@@ -1,6 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
-import NotAvailable from "../components/NotAvailable";
+import NotAvailable from "../components/Shared/NotAvailable";
+import Login from "../components/Registration/LoginPage";
+import RegistrationPage from "../components/Registration/RegistrationPage";
+import Hero from "../components/home/Hero";
+import Solution from "../components/home/Solution";
+import Features from "../components/home/Features";
+import CTA from "../components/home/CTA";
 const router = createBrowserRouter([
 {
     path:"/",
@@ -8,7 +14,20 @@ const router = createBrowserRouter([
     children:[
         {
             index: true,
-            element:<></>
+            element:<>
+            <Hero></Hero>,
+            <Solution></Solution>,
+            <Features></Features>,
+            <CTA></CTA>
+            </>
+        },
+        {
+            path:"/login",
+            element: <Login></Login>,
+        },
+        {
+            path:"/registration",
+            element: <RegistrationPage></RegistrationPage>  ,
         },
         {
             path:"/*",
