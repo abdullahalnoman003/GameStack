@@ -11,6 +11,11 @@ import PublicRoute from "../Authentication/PublicRoute";
 import Dashboard from "../components/user/Dashboard";
 import Profile from "../components/user/Profile";
 import Messages from "../components/user/Messages";
+import ForgotPassword from "../components/Registration/ForgotPassword";
+import About from "../components/Static/About";
+import Privacy from "../components/Static/Privacy";
+import Terms from "../components/Static/Terms";
+import Contact from "../components/Static/Contact";
 const router = createBrowserRouter([
 {
     path:"/",
@@ -44,6 +49,26 @@ const router = createBrowserRouter([
         {
             path:"/messages",
             element: <Messages></Messages>  ,
+        },
+        {
+            path:"/forgot-password",
+            element: <ForgotPassword></ForgotPassword> ,
+        },
+        {
+            path:"/privacy",
+            element: <Privacy></Privacy> ,
+        },
+        {
+            path:"/about",
+            element: <About></About> ,
+        },
+        {
+            path:"/terms",
+            element: <Terms></Terms> ,
+        },
+        {
+            path:"/contact",
+            element: <Contact></Contact> ,
         },
         {
             path:"/*",
