@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaGamepad, FaTrophy, FaUser } from "react-icons/fa";
+import { FaGamepad, FaTrophy, FaUser, FaSignOutAlt } from "react-icons/fa";
+import { MdDashboard, MdMessage } from "react-icons/md";
 import { HiLightningBolt } from "react-icons/hi";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
   return (
     <div className="navbar bg-gradient-to-r from-black via-gray-900 to-black shadow-xl border-b border-purple-500/30 backdrop-blur-md fixed top-0 z-50">
       {/* Mobile Dropdown */}
@@ -81,15 +84,68 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Right Side - Get Started Button */}
+      {/* Right Side - Get Started Button or User Profile */}
       <div className="navbar-end gap-2">
-        <NavLink  
-          to="/login" 
-          className="btn bg-purple-600 hover:bg-purple-700 border-0 text-white font-bold uppercase tracking-wider transition-colors"
-        >
-          <FaUser />
-          <span className="hidden sm:inline">Get Started</span>
-        </NavLink>
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar ring-2 ring-purple-500 ring-offset-2 ring-offset-black">
+              <div className="w-10 rounded-full">
+                <img
+                  alt={user.displayName || "User"}
+                  src={user.photoURL || "https://ui-avatars.com/api/?name=" + (user.displayName || "User") + "&background=9333ea&color=fff&bold=true"}
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-3 shadow-2xl bg-black border border-purple-500/50 rounded-lg w-56"
+            >
+              <li className="menu-title px-4 py-2">
+                <span className="text-purple-400 font-bold text-sm">
+                  {user.displayName || "Gamer"}
+                </span>
+                <span className="text-gray-500 text-xs">{user.email}</span>
+              </li>
+              <div className="divider my-1"></div>
+              <li>
+                <Link to="/dashboard" className="text-gray-300 hover:text-purple-400 hover:bg-purple-500/20 transition-colors">
+                  <MdDashboard className="text-lg" />
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link to="/profile" className="text-gray-300 hover:text-purple-400 hover:bg-purple-500/20 transition-colors">
+                  <FaUser className="text-lg" />
+                  Profile
+                </Link>
+              </li>
+              <li>
+                <Link to="/messages" className="text-gray-300 hover:text-purple-400 hover:bg-purple-500/20 transition-colors">
+                  <MdMessage className="text-lg" />
+                  Messages
+                </Link>
+              </li>
+              <div className="divider my-1"></div>
+              <li>
+                <button
+                  onClick={logout}
+                  className="text-red-400 hover:text-red-300 hover:bg-red-500/20 transition-colors font-semibold"
+                >
+                  <FaSignOutAlt className="text-lg" />
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <NavLink  
+            to="/login" 
+            className="btn bg-purple-600 hover:bg-purple-700 border-0 text-white font-bold uppercase tracking-wider transition-colors"
+          >
+            <FaUser />
+            <span className="hidden sm:inline">Get Started</span>
+          </NavLink>
+        )}
       </div>
     </div>
   );

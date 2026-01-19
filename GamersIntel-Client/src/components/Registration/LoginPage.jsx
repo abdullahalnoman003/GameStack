@@ -164,7 +164,7 @@ return (
               <p className="text-center text-sm text-gray-400 mt-6">
                 New to GamersIntel?
                 <Link
-                  to="/register"
+                  to="/registration"
                   className="text-purple-400 hover:text-purple-300 ml-2 font-semibold transition-colors"
                 >
                   Create Account
