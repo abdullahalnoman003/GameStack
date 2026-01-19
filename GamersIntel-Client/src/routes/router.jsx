@@ -7,9 +7,9 @@ import Hero from "../components/home/Hero";
 import Solution from "../components/home/Solution";
 import Features from "../components/home/Features";
 import CTA from "../components/home/CTA";
-import PublicRoute from "../Authentication/publicRoute";
+import PublicRoute from "../Authentication/PublicRoute";
 import Dashboard from "../components/user/Dashboard";
-import Profile from "../components/user/profile";
+import Profile from "../components/user/Profile";
 import Messages from "../components/user/Messages";
 const router = createBrowserRouter([
 {
