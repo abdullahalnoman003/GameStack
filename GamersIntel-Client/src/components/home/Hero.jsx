@@ -49,7 +49,7 @@ const Hero = () => {
                 {/* Main Headline - Aggressive */}
                 <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-none tracking-tight">
                     <span className="block text-white drop-shadow-[0_0_30px_rgba(147,51,234,0.8)] animate-pulse">DOMINATE</span>
-                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 drop-shadow-[0_0_30px_rgba(236,72,153,0.8)] mt-2">
+                    <span className="bitcount-single block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 drop-shadow-[0_0_30px_rgba(236,72,153,0.8)] mt-2">
                         YOUR GAMING
                     </span>
                     <span className="block text-white drop-shadow-[0_0_30px_rgba(6,182,212,0.8)] mt-2">LEGACY</span>
