@@ -17,6 +17,7 @@ import Privacy from "../components/Static/Privacy";
 import Terms from "../components/Static/Terms";
 import Contact from "../components/Static/Contact";
 import FAQ from "../components/Static/FAQ";
+import PrivateRoute from "../Authentication/PrivateRoute";
 const router = createBrowserRouter([
 {
     path:"/",
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
         },
         {
             path:"/dashboard",
-            element: <Dashboard></Dashboard>  ,
+            element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>  ,
         },
         {
             path:"/profile",
