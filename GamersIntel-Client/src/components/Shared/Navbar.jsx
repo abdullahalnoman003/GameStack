@@ -20,6 +20,7 @@ const Navbar = () => {
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-black border border-purple-500/50 rounded-lg w-52">
             <li><NavLink to="/" className="text-gray-300 hover:text-purple-400 font-semibold">Home</NavLink></li>
             <li><NavLink to="/about" className="text-gray-300 hover:text-purple-400 font-semibold">About</NavLink></li>
+            <li><NavLink to="/games" className="text-gray-300 hover:text-purple-400 font-semibold">Games</NavLink></li>
           </ul>
         </div>
         
@@ -49,6 +50,13 @@ const Navbar = () => {
               className="font-bold" 
             >
               About
+            </NavLink> </li> 
+            <li>
+            <NavLink 
+              to="/games" 
+              className="font-bold" 
+            >
+              Games
             </NavLink>
           </li>
         </ul>
