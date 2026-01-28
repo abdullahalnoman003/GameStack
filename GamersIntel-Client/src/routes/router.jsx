@@ -19,6 +19,7 @@ import Contact from "../components/Static/Contact";
 import FAQ from "../components/Static/FAQ";
 import Games from "../components/user/Games";
 import PrivateRoute from "../Authentication/PrivateRoute";
+import GamesDetails from "../components/user/GamesDetails";
 const router = createBrowserRouter([
 {
     path:"/",
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
         {
             path:"/games",
             element: <Games></Games> ,
+        },
+        {
+            path:"/games/:id",
+            element: <PrivateRoute><GamesDetails></GamesDetails></PrivateRoute> ,
         },
         {
             path:"/*",
