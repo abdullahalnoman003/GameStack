@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaGamepad, FaHeart, FaUsers, FaRocket } from 'react-icons/fa';
 import { HiLightningBolt } from 'react-icons/hi';
 
 const About = () => {
+    useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
     const values = [
         {
             icon: <FaGamepad className="text-5xl text-purple-400" />,

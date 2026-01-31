@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaShieldAlt, FaLock, FaUserSecret, FaDatabase } from 'react-icons/fa';
 import { HiLightningBolt } from 'react-icons/hi';
 
 const Privacy = () => {
+    useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
     const sections = [
         {
             icon: <FaShieldAlt className="text-4xl text-purple-400" />,

@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaEnvelope, FaDiscord, FaTwitter, FaTwitch, FaYoutube, FaPaperPlane, FaGamepad } from 'react-icons/fa';
 import { HiLightningBolt } from 'react-icons/hi';
 import { MdLocationOn, MdChat } from 'react-icons/md';
 import toast from 'react-hot-toast';
 
 const Contact = () => {
+    useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
     const [formData, setFormData] = useState({
         name: '',
         email: '',

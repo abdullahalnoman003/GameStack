@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaFileContract,FaShieldAlt, FaCheckCircle, FaExclamationTriangle, FaHandshake } from 'react-icons/fa';
 import { HiLightningBolt } from 'react-icons/hi';
 
 const Terms = () => {
+    useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
     const sections = [
         {
             icon: <FaHandshake className="text-4xl text-purple-400" />,

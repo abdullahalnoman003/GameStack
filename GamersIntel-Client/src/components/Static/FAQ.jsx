@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaChevronDown, FaGamepad, FaQuestionCircle, FaRocket, FaShieldAlt } from 'react-icons/fa';
 import { HiLightningBolt } from 'react-icons/hi';
 import { MdHelp } from 'react-icons/md';
 
 const FAQ = () => {
+    useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
     const [openIndex, setOpenIndex] = useState(null);
 
     const toggleFAQ = (index) => {
