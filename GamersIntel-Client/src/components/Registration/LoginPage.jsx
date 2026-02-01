@@ -3,21 +3,19 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import { useLocation, useNavigate, Link } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import {  Link } from "react-router-dom";
+import toast from "react-hot-toast";
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGamepad, FaTrophy } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { auth } from "../../Firebase/firebase.init";
+import useAxios from "../../Hooks/useAxios";
 
 const LoginPage = () => {
-const provider = new GoogleAuthProvider();
-const navigate = useNavigate();
-const location = useLocation();
-const from = location.state?.from?.pathname || "/";
-const [loading, setLoading] = useState(false);
-const [showPassword, setShowPassword] = useState(false);
-
+  const provider = new GoogleAuthProvider();
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const axiosInstance = useAxios();
 
   if (loading) {
     return (
@@ -32,44 +30,55 @@ const [showPassword, setShowPassword] = useState(false);
     );
   }
 
-const handleGoogleSignIn = () => {
-  setLoading(true);
-    signInWithPopup(auth, provider)
-    .then(() => {
-        toast.success("Login Successful! ");
-        setTimeout(() => {
-            navigate(from, { replace: true });
-        }, 1000);
+  const handleGoogleSignIn = async () => {
+    try {
+      setLoading(true);
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      const token = await user.getIdToken();
+      localStorage.setItem("access-token", token);
+
+      const userInfo = {
+        name: user.displayName,
+        email: user.email.toLowerCase(),
+        photoURL: user.photoURL || null,
+        gamerTag: null,
+        bio: null,
+        favoriteGenres: null,
+        platforms: null,
+        country: null,
+        joinDate: new Date().toISOString(),
+        lastLogin: new Date().toISOString(),
+      };
+      axiosInstance.post("/users", userInfo);
+      setLoading(false);
+      toast.success(`Welcome to GamersIntel, ${user.displayName}!`);
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message || "Google sign-in failed");
     }
-  )
-    .catch((error) => {
-        toast.error(error.message || "Google sign-in failed", );
-    })
-    .finally(() => setLoading(false));
-};
-const handleEmailLogin = (e) => {
+  };
+
+
+  const handleEmailLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    setLoading(true);
     sessionStorage.setItem("ResetEmail", email);
+    try {
+      setLoading(true);
+      await signInWithEmailAndPassword(auth, email, password);
+      setLoading(false);
+      
+      toast.success(`Login Successful! Welcome to GamersIntel,!`);
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message);
+    }
+  };
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        toast.success("Login Successful!");
-        setTimeout(() => {
-            navigate(from, { replace: true });
-        }, 1000);
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      })
-      .finally(() => setLoading(false));
-};
-
-return (
+  return (
     <>
-      <Toaster position="top-center" reverseOrder={true} />
       <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 flex justify-center items-center py-10 px-4 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -80,13 +89,12 @@ return (
           <div className="hidden md:flex bg-gradient-to-b from-purple-600 to-indigo-700 relative overflow-hidden items-center justify-center p-10">
             <div className="absolute inset-0 bg-black/20"></div>
 
-            <img 
-              src="/images/loginImg.jpg" 
-              alt="Gaming" 
+            <img
+              src="/images/loginImg.jpg"
+              alt="Gaming"
               className="absolute inset-0 w-full h-full object-cover opacity-80"
             />
-            
-           
+
             <div className="relative z-10 text-center space-y-6">
               <FaGamepad className="text-8xl text-white/90 mx-auto" />
               <h2 className="text-4xl font-black text-white uppercase tracking-wider">
@@ -96,7 +104,7 @@ return (
                 Your Gaming Memory System
               </p>
             </div>
-            
+
             {/* Decorative Corner Elements */}
             <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white/20"></div>
             <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white/20"></div>
@@ -147,7 +155,11 @@ return (
                     className="absolute right-3 top-3 text-gray-400 hover:text-white transition-colors z-10"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                    {showPassword ? (
+                      <FaEyeSlash size={18} />
+                    ) : (
+                      <FaEye size={18} />
+                    )}
                   </button>
                 </div>
                 <div className="text-sm mt-2 text-right">
@@ -190,10 +202,10 @@ return (
                   Create Account
                 </Link>
               </p>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

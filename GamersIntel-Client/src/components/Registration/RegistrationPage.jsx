@@ -6,10 +6,11 @@ import {
 } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash, FaGamepad, FaTrophy, FaUser } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { auth } from "../../Firebase/firebase.init";
+import useAxios from "../../Hooks/useAxios";
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const RegistrationPage = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const imgbbApiKey = import.meta.env.VITE_IMGBB_API_KEY;
-
+  const axiosInstance = useAxios();
   const handleImageUpload = async (imageFile) => {
     const formData = new FormData();
     formData.append("image", imageFile);
@@ -70,8 +71,9 @@ const RegistrationPage = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const user = userCredential.user;
+        const token = await user.getIdToken();
+        localStorage.setItem("access-token", token);
 
-        // Update profile
         const profileData = {
           displayName: name,
         };
@@ -79,15 +81,24 @@ const RegistrationPage = () => {
           profileData.photoURL = photoURL;
         }
 
-        await updateProfile(user, profileData);
-
-        toast.success(`Welcome to GamersIntel, ${name}!`);
-        form.reset();
-        setLoading(false);
-
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
+        updateProfile(user, profileData).then(async () => {
+          const userInfo = {
+            name: name,
+            email: email.toLowerCase(),
+            photoURL: photoURL || null,
+            gamerTag: null,
+            bio: null,
+            favoriteGenres: null,
+            platforms: null,
+            country: null,
+            joinDate: new Date().toISOString(),
+            lastLogin: new Date().toISOString(),
+          };
+          await axiosInstance.post("/users", userInfo);
+          form.reset();
+          setLoading(false);
+          toast.success(`Welcome to GamersIntel, ${name}!`);
+        });
       })
       .catch((error) => {
         console.error("Registration error:", error);
@@ -100,28 +111,44 @@ const RegistrationPage = () => {
         } else if (error.code === "auth/invalid-email") {
           errorMessage = "Invalid email address.";
         }
-
         toast.error(errorMessage);
         setLoading(false);
       });
   };
 
-  const handleGoogleSignUp = () => {
-    signInWithPopup(auth, provider)
-      .then(() => {
-        toast.success("Registration Successful!");
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-      })
-      .catch((error) => {
-        toast.error(error.message || "Google sign-up failed");
-      });
+  const handleGoogleSignUp = async () => {
+    try {
+      setLoading(true);
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      const token = await user.getIdToken();
+      localStorage.setItem("access-token", token);
+
+      const userInfo = {
+        name: user.displayName,
+        email: user.email.toLowerCase(),
+        photoURL: user.photoURL || null,
+        gamerTag: null,
+        bio: null,
+        favoriteGenres: null,
+        platforms: null,
+        country: null,
+        joinDate: new Date().toISOString(),
+        lastLogin: new Date().toISOString(),
+      };
+
+      await axiosInstance.post("/users", userInfo);
+      setLoading(false);
+      toast.success(`Welcome to GamersIntel, ${user.displayName}!`);
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message || "Google sign-up failed");
+    }
   };
 
   if (loading) {
     return (
-      <div className="h-screen flex justify-center items-center bg-gradient-to-b from-gray-900 via-black to-gray-900">
+      <div className="h-screen flex justify-center items-center bg-linear-to-b from-gray-900 via-black to-gray-900">
         <div className="text-center">
           <span className="loading loading-bars loading-lg text-purple-500"></span>
           <p className="text-xl font-semibold text-white mt-4">
@@ -134,8 +161,7 @@ const RegistrationPage = () => {
 
   return (
     <>
-      <Toaster position="top-center" reverseOrder={true} />
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 flex justify-center items-center py-10 px-4 relative overflow-hidden">
+      <div className="min-h-screen bg-linear-to-b from-gray-900 via-black to-gray-900 flex justify-center items-center py-10 px-4 relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -144,7 +170,7 @@ const RegistrationPage = () => {
 
         <div className="grid md:grid-cols-2 shadow-2xl bg-black/90 backdrop-blur-xl rounded-3xl border border-purple-500/30 max-w-5xl w-full overflow-hidden relative z-10">
           {/* Left Side - Gaming Themed */}
-          <div className="hidden md:flex bg-gradient-to-b from-purple-600 to-indigo-700 relative overflow-hidden items-center justify-center p-10">
+          <div className="hidden md:flex bg-linear-to-b from-purple-600 to-indigo-700 relative overflow-hidden items-center justify-center p-10">
             <div className="absolute inset-0 bg-black/20"></div>
 
             <img
@@ -175,7 +201,7 @@ const RegistrationPage = () => {
           </div>
 
           {/* Right Side - Registration Form */}
-          <div className="p-10 bg-gradient-to-b from-black to-gray-900">
+          <div className="p-10 bg-linear-to-b from-black to-gray-900">
             <div className="text-center mb-8">
               <h1 className="text-3xl font-extrabold text-white mb-2">
                 Create Account
