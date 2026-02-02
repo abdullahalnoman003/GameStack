@@ -6,10 +6,12 @@ import { FaUser, FaEnvelope, FaEdit, FaSave, FaTimes, FaCamera, FaGamepad, FaTro
 import { SiPlaystation, SiNintendoswitch } from "react-icons/si";
 import { GiPc } from "react-icons/gi";
 import useDocumentTitle from "../../Hooks/useDocumentTitle";
+import useAxios from "../../Hooks/useAxios";
 
 const Profile = () => {
   useDocumentTitle("GamersIntel - Profile");
   const { user } = useContext(AuthContext);
+  const axiosInstance = useAxios();
   
   // State for user profile data
   const [isEditing, setIsEditing] = useState(false);
@@ -58,16 +60,16 @@ const Profile = () => {
       });
 
       // TODO: Update backend when API is ready
-      // const updateData = {
-      //   name: userProfile.displayName,
-      //   photoURL: userProfile.photoURL,
-      //   gamerTag: userProfile.gamerTag,
-      //   bio: userProfile.bio,
-      //   favoriteGenres: userProfile.favoriteGenres,
-      //   platforms: userProfile.platforms,
-      //   country: userProfile.country,
-      // };
-      // await axiosSecure.patch(`/users/update?email=${user.email}`, updateData);
+      const updateData = {
+        name: userProfile.displayName,
+        photoURL: userProfile.photoURL,
+        gamerTag: userProfile.gamerTag,
+        bio: userProfile.bio,
+        favoriteGenres: userProfile.favoriteGenres,
+        platforms: userProfile.platforms,
+        country: userProfile.country,
+      };
+      await axiosInstance.patch(`/users/update?email=${user.email}`, updateData);
       
       setIsEditing(false);
       toast.success("Profile updated successfully!");
