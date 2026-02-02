@@ -21,7 +21,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    const userCollection = client.db("userDB").collection("users");
+    const userCollection = client.db("GamersIntelDB").collection("users");
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USER CREATION AND INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     app.post("/users", async (req, res) => {
