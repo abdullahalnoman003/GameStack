@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Creepster&family=Galdeano&family=Poetsen+One&display=swap');
 @import "tailwindcss";
  @plugin "daisyui" {
-   themes: synthwave --default;
+   themes: abyss --default;
  }
+
+html {
+  scroll-behavior: smooth;
+}
+
  .galdeano-regular {
   font-family: "Galdeano", sans-serif;
   font-weight: 400;
