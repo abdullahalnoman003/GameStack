@@ -8,7 +8,7 @@ const Terms = () => {
 }, []);
     const sections = [
         {
-            icon: <FaHandshake className="text-4xl text-purple-400" />,
+            icon: <FaHandshake className="text-4xl text-primary" />,
             title: "Acceptance of Terms",
             content: [
                 {
@@ -20,7 +20,7 @@ const Terms = () => {
             ]
         },
         {
-            icon: <FaCheckCircle className="text-4xl text-green-400" />,
+            icon: <FaCheckCircle className="text-4xl text-success" />,
             title: "User Accounts",
             content: [
                 {
@@ -38,7 +38,7 @@ const Terms = () => {
             ]
         },
         {
-            icon: <FaFileContract className="text-4xl text-cyan-400" />,
+            icon: <FaFileContract className="text-4xl text-secondary" />,
             title: "User Content & Conduct",
             content: [
                 {
@@ -56,7 +56,7 @@ const Terms = () => {
             ]
         },
         {
-            icon: <FaExclamationTriangle className="text-4xl text-yellow-400" />,
+            icon: <FaExclamationTriangle className="text-4xl text-warning" />,
             title: "Service Rules",
             content: [
                 {
@@ -74,7 +74,7 @@ const Terms = () => {
             ]
         },
         {
-            icon: <FaShieldAlt className="text-4xl text-pink-400" />,
+            icon: <FaShieldAlt className="text-4xl text-accent" />,
             title: "Service Availability",
             content: [
                 {
@@ -92,7 +92,7 @@ const Terms = () => {
             ]
         },
         {
-            icon: <FaFileContract className="text-4xl text-blue-400" />,
+            icon: <FaFileContract className="text-4xl text-info" />,
             title: "Limitation of Liability",
             content: [
                 {
@@ -104,7 +104,7 @@ const Terms = () => {
             ]
         },
         {
-            icon: <FaHandshake className="text-4xl text-purple-400" />,
+            icon: <FaHandshake className="text-4xl text-primary" />,
             title: "Termination",
             content: [
                 {
@@ -124,83 +124,83 @@ const Terms = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-black pt-20">
+        <div className="min-h-screen bg-base-100 pt-20">
             {/* Hero Section */}
-            <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+            <section className="py-20 bg-gradient-to-b from-base-100 via-base-200 to-base-100 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10" style={{
                     backgroundImage: `
-                        linear-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(147, 51, 234, 0.1) 1px, transparent 1px)
+                        linear-gradient(oklch(var(--p) / 0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, oklch(var(--p) / 0.1) 1px, transparent 1px)
                     `,
                     backgroundSize: '60px 60px'
                 }}></div>
 
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-12">
-                        <div className="inline-flex items-center gap-2 px-6 py-2 bg-purple-600/20 border border-purple-500/40 rounded-full mb-6">
-                            <HiLightningBolt className="text-yellow-400" />
-                            <span className="text-purple-300 font-semibold text-sm uppercase tracking-wider">Terms of Service</span>
+                        <div className="inline-flex items-center gap-2 px-6 py-2 bg-primary/20 border border-primary/40 rounded-full mb-6">
+                            <HiLightningBolt className="text-warning" />
+                            <span className="text-primary font-semibold text-sm uppercase tracking-wider">Terms of Service</span>
                         </div>
                         
-                        <h1 className="poetsen-one-regular text-5xl md:text-7xl text-white mb-6">
+                        <h1 className="poetsen-one-regular text-5xl md:text-7xl text-base-content mb-6">
                             THE{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                                 GROUND RULES
                             </span>
                         </h1>
                         
-                        <p className="galdeano-regular text-xl text-gray-300 max-w-3xl mx-auto">
+                        <p className="galdeano-regular text-xl text-base-content/70 max-w-3xl mx-auto">
                             Simple, transparent rules for using GamersIntel. We keep it fair and straightforward.
                         </p>
                         
-                        <div className="mt-8 inline-block bg-blue-500/10 border border-blue-500/30 rounded-lg px-6 py-3">
-                            <p className="text-blue-400 font-semibold">Last Updated: January 2026</p>
+                        <div className="mt-8 inline-block bg-info/10 border border-info/30 rounded-lg px-6 py-3">
+                            <p className="text-info font-semibold">Last Updated: January 2026</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* TLDR Section */}
-            <section className="py-20 bg-black">
+            <section className="py-20 bg-base-100">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 border border-purple-500/50 rounded-2xl p-8 md:p-12">
-                        <h2 className="poetsen-one-regular text-3xl md:text-4xl text-white mb-6 text-center">
+                    <div className="bg-gradient-to-br from-primary/40 to-accent/40 border border-primary/50 rounded-2xl p-8 md:p-12">
+                        <h2 className="poetsen-one-regular text-3xl md:text-4xl text-base-content mb-6 text-center">
                             TL;DR{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                                 (The Short Version)
                             </span>
                         </h2>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="flex items-start gap-3">
-                                <FaCheckCircle className="text-green-400 text-xl mt-1 flex-shrink-0" />
+                                <FaCheckCircle className="text-success text-xl mt-1 flex-shrink-0" />
                                 <div>
-                                    <h3 className="text-white font-bold mb-1">Be Respectful</h3>
-                                    <p className="text-gray-300">Don't be a jerk. Treat others how you want to be treated.</p>
+                                    <h3 className="text-base-content font-bold mb-1">Be Respectful</h3>
+                                    <p className="text-base-content/70">Don't be a jerk. Treat others how you want to be treated.</p>
                                 </div>
                             </div>
                             
                             <div className="flex items-start gap-3">
-                                <FaCheckCircle className="text-green-400 text-xl mt-1 flex-shrink-0" />
+                                <FaCheckCircle className="text-success text-xl mt-1 flex-shrink-0" />
                                 <div>
-                                    <h3 className="text-white font-bold mb-1">Own Your Content</h3>
-                                    <p className="text-gray-300">Your reviews are yours, but we can display them.</p>
+                                    <h3 className="text-base-content font-bold mb-1">Own Your Content</h3>
+                                    <p className="text-base-content/70">Your reviews are yours, but we can display them.</p>
                                 </div>
                             </div>
                             
                             <div className="flex items-start gap-3">
-                                <FaCheckCircle className="text-green-400 text-xl mt-1 flex-shrink-0" />
+                                <FaCheckCircle className="text-success text-xl mt-1 flex-shrink-0" />
                                 <div>
-                                    <h3 className="text-white font-bold mb-1">No Abuse</h3>
-                                    <p className="text-gray-300">Don't hack, spam, or misuse the service.</p>
+                                    <h3 className="text-base-content font-bold mb-1">No Abuse</h3>
+                                    <p className="text-base-content/70">Don't hack, spam, or misuse the service.</p>
                                 </div>
                             </div>
                             
                             <div className="flex items-start gap-3">
-                                <FaCheckCircle className="text-green-400 text-xl mt-1 flex-shrink-0" />
+                                <FaCheckCircle className="text-success text-xl mt-1 flex-shrink-0" />
                                 <div>
-                                    <h3 className="text-white font-bold mb-1">Free to Leave</h3>
-                                    <p className="text-gray-300">Delete your account anytime, no questions asked.</p>
+                                    <h3 className="text-base-content font-bold mb-1">Free to Leave</h3>
+                                    <p className="text-base-content/70">Delete your account anytime, no questions asked.</p>
                                 </div>
                             </div>
                         </div>
@@ -209,26 +209,26 @@ const Terms = () => {
             </section>
 
             {/* Main Content */}
-            <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
+            <section className="py-20 bg-gradient-to-b from-base-100 via-base-200 to-base-100">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="space-y-12">
                         {sections.map((section, index) => (
                             <div 
                                 key={index}
-                                className="bg-gray-900/50 border border-purple-500/30 rounded-xl p-8 hover:border-purple-500/50 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300"
+                                className="bg-base-200/50 border border-primary/30 rounded-xl p-8 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
                             >
                                 <div className="flex items-center gap-4 mb-6">
                                     {section.icon}
-                                    <h2 className="poetsen-one-regular text-3xl text-white">{section.title}</h2>
+                                    <h2 className="poetsen-one-regular text-3xl text-base-content">{section.title}</h2>
                                 </div>
                                 
                                 <div className="space-y-6">
                                     {section.content.map((item, idx) => (
                                         <div key={idx}>
                                             {item.subtitle && (
-                                                <h3 className="text-xl font-bold text-purple-300 mb-2">{item.subtitle}</h3>
+                                                <h3 className="text-xl font-bold text-primary mb-2">{item.subtitle}</h3>
                                             )}
-                                            <p className="text-gray-400 leading-relaxed border-l-4 border-purple-500/50 pl-6 hover:border-purple-500 transition-colors duration-300">
+                                            <p className="text-base-content/60 leading-relaxed border-l-4 border-primary/50 pl-6 hover:border-primary transition-colors duration-300">
                                                 {item.text}
                                             </p>
                                         </div>
@@ -241,21 +241,21 @@ const Terms = () => {
             </section>
 
             {/* Contact Section */}
-            <section className="py-20 bg-black">
+            <section className="py-20 bg-base-100">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="bg-gradient-to-br from-gray-900/90 to-black/90 border border-purple-500/50 rounded-2xl p-12">
-                        <h2 className="poetsen-one-regular text-4xl text-white mb-4">
+                    <div className="bg-gradient-to-br from-base-200/90 to-base-100/90 border border-primary/50 rounded-2xl p-12">
+                        <h2 className="poetsen-one-regular text-4xl text-base-content mb-4">
                             QUESTIONS ABOUT{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                                 THE TERMS?
                             </span>
                         </h2>
-                        <p className="galdeano-regular text-xl text-gray-300 mb-8">
+                        <p className="galdeano-regular text-xl text-base-content/70 mb-8">
                             We're happy to clarify anything. Reach out anytime at support@gamersintel.com
                         </p>
                         <a 
                             href="/contact" 
-                            className="inline-block px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg hover:scale-105 hover:shadow-xl hover:shadow-purple-500/50 text-white font-bold uppercase tracking-wider transition-all duration-300"
+                            className="inline-block px-10 py-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 rounded-lg hover:scale-105 hover:shadow-xl hover:shadow-primary/50 text-base-content font-bold uppercase tracking-wider transition-all duration-300"
                         >
                             Contact Us
                         </a>

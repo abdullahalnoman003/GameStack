@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
           <div className="relative inline-block">
             <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-2xl opacity-50 animate-pulse"></div>
             <img 
-              src="./images/logo.png" 
+              src="/images/logo.png" 
               alt="GamersIntel Logo" 
               className="relative w-32 h-32 md:w-40 md:h-40 animate-pulse drop-shadow-2xl"
             />

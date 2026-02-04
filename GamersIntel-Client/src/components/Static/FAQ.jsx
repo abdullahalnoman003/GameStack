@@ -15,7 +15,7 @@ const FAQ = () => {
 
     const faqCategories = [
         {
-            icon: <FaGamepad className="text-4xl text-purple-400" />,
+            icon: <FaGamepad className="text-4xl text-primary" />,
             category: "Getting Started",
             questions: [
                 {
@@ -37,7 +37,7 @@ const FAQ = () => {
             ]
         },
         {
-            icon: <FaRocket className="text-4xl text-cyan-400" />,
+            icon: <FaRocket className="text-4xl text-secondary" />,
             category: "Using GamersIntel",
             questions: [
                 {
@@ -63,7 +63,7 @@ const FAQ = () => {
             ]
         },
         {
-            icon: <FaShieldAlt className="text-4xl text-pink-400" />,
+            icon: <FaShieldAlt className="text-4xl text-accent" />,
             category: "Privacy & Security",
             questions: [
                 {
@@ -85,7 +85,7 @@ const FAQ = () => {
             ]
         },
         {
-            icon: <MdHelp className="text-4xl text-green-400" />,
+            icon: <MdHelp className="text-4xl text-success" />,
             category: "Features & Support",
             questions: [
                 {
@@ -115,32 +115,32 @@ const FAQ = () => {
     let globalIndex = 0;
 
     return (
-        <div className="min-h-screen bg-black pt-20">
+        <div className="min-h-screen bg-base-100 pt-20">
             {/* Hero Section */}
-            <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+            <section className="py-20 bg-gradient-to-b from-base-100 via-base-200 to-base-100 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10" style={{
                     backgroundImage: `
-                        linear-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(147, 51, 234, 0.1) 1px, transparent 1px)
+                        linear-gradient(oklch(var(--p) / 0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, oklch(var(--p) / 0.1) 1px, transparent 1px)
                     `,
                     backgroundSize: '60px 60px'
                 }}></div>
 
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-12">
-                        <div className="inline-flex items-center gap-2 px-6 py-2 bg-purple-600/20 border border-purple-500/40 rounded-full mb-6">
-                            <HiLightningBolt className="text-yellow-400" />
-                            <span className="text-purple-300 font-semibold text-sm uppercase tracking-wider">Help Center</span>
+                        <div className="inline-flex items-center gap-2 px-6 py-2 bg-primary/20 border border-primary/40 rounded-full mb-6">
+                            <HiLightningBolt className="text-warning" />
+                            <span className="text-primary font-semibold text-sm uppercase tracking-wider">Help Center</span>
                         </div>
                         
-                        <h1 className="poetsen-one-regular text-5xl md:text-7xl text-white mb-6">
+                        <h1 className="poetsen-one-regular text-5xl md:text-7xl text-base-content mb-6">
                             FREQUENTLY{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                                 ASKED QUESTIONS
                             </span>
                         </h1>
                         
-                        <p className="galdeano-regular text-xl text-gray-300 max-w-3xl mx-auto">
+                        <p className="galdeano-regular text-xl text-base-content/70 max-w-3xl mx-auto">
                             Got questions? We've got answers! Find everything you need to know about GamersIntel.
                         </p>
                     </div>
@@ -148,14 +148,14 @@ const FAQ = () => {
             </section>
 
             {/* Quick Links */}
-            <section className="py-12 bg-black">
+            <section className="py-12 bg-base-100">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-wrap justify-center gap-4">
                         {faqCategories.map((cat, index) => (
                             <a
                                 key={index}
                                 href={`#${cat.category.toLowerCase().replace(/\s+/g, '-')}`}
-                                className="flex items-center gap-2 px-6 py-3 bg-purple-500/10 border border-purple-500/30 rounded-lg hover:bg-purple-500/20 hover:scale-105 hover:border-purple-500/50 transition-all duration-300 text-purple-300 hover:text-white"
+                                className="flex items-center gap-2 px-6 py-3 bg-primary/10 border border-primary/30 rounded-lg hover:bg-primary/20 hover:scale-105 hover:border-primary/50 transition-all duration-300 text-primary hover:text-base-content"
                             >
                                 <span className="text-xl">{cat.icon}</span>
                                 <span className="font-semibold">{cat.category}</span>
@@ -166,14 +166,14 @@ const FAQ = () => {
             </section>
 
             {/* FAQ Categories */}
-            <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
+            <section className="py-20 bg-gradient-to-b from-base-100 via-base-200 to-base-100">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                     {faqCategories.map((category, catIndex) => (
                         <div key={catIndex} id={category.category.toLowerCase().replace(/\s+/g, '-')}>
                             {/* Category Header */}
                             <div className="flex items-center gap-4 mb-8">
                                 {category.icon}
-                                <h2 className="poetsen-one-regular text-4xl text-white">{category.category}</h2>
+                                <h2 className="poetsen-one-regular text-4xl text-base-content">{category.category}</h2>
                             </div>
 
                             {/* FAQ Items */}
@@ -185,15 +185,15 @@ const FAQ = () => {
                                     return (
                                         <div 
                                             key={qIndex}
-                                            className="bg-gray-900/50 border border-purple-500/30 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all duration-300"
+                                            className="bg-base-200/50 border border-primary/30 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300"
                                         >
                                             <button
                                                 onClick={() => toggleFAQ(currentIndex)}
-                                                className="w-full flex items-center justify-between p-6 text-left hover:bg-purple-500/5 transition-colors duration-300"
+                                                className="w-full flex items-center justify-between p-6 text-left hover:bg-primary/5 transition-colors duration-300"
                                             >
-                                                <span className="text-lg font-bold text-white pr-4">{faq.question}</span>
+                                                <span className="text-lg font-bold text-base-content pr-4">{faq.question}</span>
                                                 <FaChevronDown 
-                                                    className={`text-purple-400 text-xl flex-shrink-0 transition-transform duration-300 ${
+                                                    className={`text-primary text-xl flex-shrink-0 transition-transform duration-300 ${
                                                         isOpen ? 'rotate-180' : ''
                                                     }`}
                                                 />
@@ -204,8 +204,8 @@ const FAQ = () => {
                                                     isOpen ? 'max-h-96' : 'max-h-0'
                                                 }`}
                                             >
-                                                <div className="px-6 pb-6 border-t border-purple-500/20">
-                                                    <p className="text-gray-400 leading-relaxed pt-4">{faq.answer}</p>
+                                                <div className="px-6 pb-6 border-t border-primary/20">
+                                                    <p className="text-base-content/60 leading-relaxed pt-4">{faq.answer}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -218,23 +218,23 @@ const FAQ = () => {
             </section>
 
             {/* Still Have Questions */}
-            <section className="py-20 bg-black">
+            <section className="py-20 bg-base-100">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-gradient-to-br from-gray-900/90 to-black/90 border border-purple-500/50 rounded-2xl p-12 text-center hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300">
-                        <FaQuestionCircle className="text-6xl text-purple-400 mx-auto mb-6" />
-                        <h2 className="poetsen-one-regular text-4xl text-white mb-4">
+                    <div className="bg-gradient-to-br from-base-200/90 to-base-100/90 border border-primary/50 rounded-2xl p-12 text-center hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300">
+                        <FaQuestionCircle className="text-6xl text-primary mx-auto mb-6" />
+                        <h2 className="poetsen-one-regular text-4xl text-base-content mb-4">
                             STILL HAVE{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                                 QUESTIONS?
                             </span>
                         </h2>
-                        <p className="galdeano-regular text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                        <p className="galdeano-regular text-xl text-base-content/70 mb-8 max-w-2xl mx-auto">
                             Can't find what you're looking for? We're here to help! Reach out through our contact page or join our Discord community.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a 
                                 href="/contact" 
-                                className="inline-block px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg hover:scale-105 hover:shadow-xl hover:shadow-purple-500/50 text-white font-bold uppercase tracking-wider transition-all duration-300"
+                                className="inline-block px-10 py-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 rounded-lg hover:scale-105 hover:shadow-xl hover:shadow-primary/50 text-base-content font-bold uppercase tracking-wider transition-all duration-300"
                             >
                                 Contact Us
                             </a>
@@ -242,7 +242,7 @@ const FAQ = () => {
                                 href="https://discord.gg/gamersintel" 
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-block px-10 py-4 bg-transparent border-2 border-purple-500 rounded-lg hover:bg-purple-500/20 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 text-purple-300 hover:text-white font-bold uppercase tracking-wider transition-all duration-300"
+                                className="inline-block px-10 py-4 bg-transparent border-2 border-primary rounded-lg hover:bg-primary/20 hover:scale-105 hover:shadow-xl hover:shadow-primary/30 text-primary hover:text-base-content font-bold uppercase tracking-wider transition-all duration-300"
                             >
                                 Join Discord
                             </a>

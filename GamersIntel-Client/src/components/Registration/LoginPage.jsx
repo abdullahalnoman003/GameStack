@@ -79,15 +79,15 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 flex justify-center items-center py-10 px-4 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-b from-base-300 via-base-100 to-base-300 flex justify-center items-center py-10 px-4 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute top-20 left-20 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 shadow-2xl bg-black/90 backdrop-blur-xl rounded-3xl border border-purple-500/30 max-w-4xl w-full overflow-hidden relative z-10">
-          <div className="hidden md:flex bg-gradient-to-b from-purple-600 to-indigo-700 relative overflow-hidden items-center justify-center p-10">
-            <div className="absolute inset-0 bg-black/20"></div>
+        <div className="grid md:grid-cols-2 shadow-2xl bg-base-100/90 backdrop-blur-xl rounded-3xl border border-primary/30 max-w-4xl w-full overflow-hidden relative z-10">
+          <div className="hidden md:flex bg-gradient-to-b from-primary to-primary relative overflow-hidden items-center justify-center p-10">
+            <div className="absolute inset-0 bg-base-100/20"></div>
 
             <img
               src="/images/loginImg.jpg"
@@ -96,42 +96,42 @@ const LoginPage = () => {
             />
 
             <div className="relative z-10 text-center space-y-6">
-              <FaGamepad className="text-8xl text-white/90 mx-auto" />
-              <h2 className="text-4xl font-black text-white uppercase tracking-wider">
+              <FaGamepad className="text-8xl text-primary-content/90 mx-auto" />
+              <h2 className="text-4xl font-black text-primary-content uppercase tracking-wider">
                 GamersIntel
               </h2>
-              <p className="text-base text-purple-100">
+              <p className="text-base text-accent">
                 Your Gaming Memory System
               </p>
             </div>
 
             {/* Decorative Corner Elements */}
-            <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white/20"></div>
-            <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white/20"></div>
+            <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-primary-content/20"></div>
+            <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-primary-content/20"></div>
           </div>
 
           {/* Right Side - Login Form */}
-          <div className="p-10 bg-gradient-to-b from-black to-gray-900">
+          <div className="p-10 bg-gradient-to-b from-base-100 to-base-300">
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-extrabold text-white mb-2">
+              <h1 className="text-3xl font-extrabold text-base-content mb-2">
                 Welcome Back
               </h1>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-base-content/60">
                 Sign in to track your gaming journey
               </p>
-              <div className="mt-4 h-0.5 w-20 bg-purple-500 mx-auto"></div>
+              <div className="mt-4 h-0.5 w-20 bg-primary mx-auto"></div>
             </div>
 
             <form onSubmit={handleEmailLogin} className="space-y-5">
               {/* Email */}
               <div className="form-control">
-                <label className="label font-semibold text-gray-300 text-sm">
+                <label className="label font-semibold text-base-content text-sm">
                   Email
                 </label>
                 <input
                   type="email"
                   name="email"
-                  className="input bg-gray-800/80 border border-purple-500/30 focus:border-purple-500 focus:outline-none w-full text-white placeholder-gray-500 transition-colors"
+                  className="input bg-base-200 border border-primary/30 focus:border-primary focus:outline-none w-full text-base-content placeholder-base-content/60 transition-colors"
                   placeholder="Enter your email"
                   required
                 />
@@ -139,20 +139,20 @@ const LoginPage = () => {
 
               {/* Password */}
               <div className="form-control">
-                <label className="label font-semibold text-gray-300 text-sm">
+                <label className="label font-semibold text-base-content text-sm">
                   Password
                 </label>
                 <div className="relative">
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
-                    className="input bg-gray-800/80 border border-purple-500/30 focus:border-purple-500 focus:outline-none w-full pr-10 text-white placeholder-gray-500 transition-colors"
+                    className="input bg-base-200 border border-primary/30 focus:border-primary focus:outline-none w-full pr-10 text-base-content placeholder-base-content/60 transition-colors"
                     placeholder="Enter your password"
                     required
                   />
                   <button
                     type="button"
-                    className="absolute right-3 top-3 text-gray-400 hover:text-white transition-colors z-10"
+                    className="absolute right-3 top-3 text-base-content/60 hover:text-base-content transition-colors z-10"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
@@ -165,7 +165,7 @@ const LoginPage = () => {
                 <div className="text-sm mt-2 text-right">
                   <Link
                     to="/forgot-password"
-                    className="text-purple-400 hover:text-purple-300 transition-colors"
+                    className="text-primary hover:text-accent transition-colors"
                   >
                     Forgot Password?
                   </Link>
@@ -175,29 +175,29 @@ const LoginPage = () => {
               {/* Login Button */}
               <button
                 type="submit"
-                className="btn w-full bg-purple-600 hover:bg-purple-700 text-white font-bold uppercase tracking-wider border-0 transition-colors"
+                className="btn w-full bg-primary hover:bg-primary/80 text-base-content font-bold uppercase tracking-wider border-0 transition-colors"
               >
                 Login
               </button>
 
-              <div className="divider text-xs text-gray-600">OR</div>
+              <div className="divider text-xs text-base-content/60">OR</div>
 
               {/* Google Button */}
               <button
                 type="button"
                 onClick={handleGoogleSignIn}
-                className="btn bg-gray-800 border border-gray-700 hover:bg-gray-700 w-full flex items-center justify-center gap-2 text-white transition-colors"
+                className="btn bg-base-200 border border-base-300 hover:bg-base-300 w-full flex items-center justify-center gap-2 text-base-content transition-colors"
               >
                 <FcGoogle size={20} />
                 Continue with Google
               </button>
 
               {/* Redirect */}
-              <p className="text-center text-sm text-gray-400 mt-6">
+              <p className="text-center text-sm text-base-content/60 mt-6">
                 New to GamersIntel?
                 <Link
                   to="/registration"
-                  className="text-purple-400 hover:text-purple-300 ml-2 font-semibold transition-colors"
+                  className="text-primary hover:text-accent ml-2 font-semibold transition-colors"
                 >
                   Create Account
                 </Link>
