@@ -17,7 +17,7 @@ const Hero = () => {
             }}></div>
             
             {/* The dark overlay of a */}
-            <div className="absolute inset-0 bg-gradient-to-b from-base-100/50 via-base-100/70 to-base-100"></div>
+            <div className="absolute inset-0 bg-linear-to-b from-base-100/50 via-base-100/70 to-base-100"></div>
 
             {/* Subtle Grid Background */}
             <div className="absolute inset-0 opacity-10" style={{
@@ -39,14 +39,14 @@ const Hero = () => {
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-6 py-2 bg-primary/20 border border-primary/40 rounded-full mb-6 hover:bg-primary/30 hover:border-primary/60 transition-all duration-300">
                     <HiLightningBolt className="text-warning" />
-                    <span className="text-primary font-semibold text-sm uppercase creepster-regular tracking-wider">Your Gaming Memory System</span>
+                    <span className="text-secondary font-semibold text-sm  creepster-regular tracking-wider">Your Gaming Memory System</span>
                 </div>
 
                 {/* Main Headline with Custom Font */}
                 <h1 className="poetsen-one-regular text-5xl md:text-7xl text-base-content mb-6 leading-tight">
                     DOMINATE YOUR
                     <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary">
+                    <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-accent to-secondary">
                         GAMING LEGACY
                     </span>
                 </h1>
@@ -60,33 +60,22 @@ const Hero = () => {
                 <div className="flex flex-wrap justify-center gap-8 mb-10">
                     <div className="text-center bg-primary/10 border border-primary/20 rounded-lg px-8 py-4 hover:bg-primary/20 hover:scale-110 hover:border-primary/40 transition-all duration-300">
                         <div className="text-4xl font-bold text-primary">10K+</div>
-                        <div className="text-sm text-base-content/60 uppercase tracking-wide">Games</div>
+                        <div className="text-sm text-base-content/60  tracking-wide">Games</div>
                     </div>
                     <div className="text-center bg-accent/10 border border-accent/20 rounded-lg px-8 py-4 hover:bg-accent/20 hover:scale-110 hover:border-accent/40 transition-all duration-300">
                         <div className="text-4xl font-bold text-accent">5K+</div>
-                        <div className="text-sm text-base-content/60 uppercase tracking-wide">Gamers</div>
+                        <div className="text-sm text-base-content/60  tracking-wide">Gamers</div>
                     </div>
                     <div className="text-center bg-secondary/10 border border-secondary/20 rounded-lg px-8 py-4 hover:bg-secondary/20 hover:scale-110 hover:border-secondary/40 transition-all duration-300">
                         <div className="text-4xl font-bold text-secondary">50K+</div>
-                        <div className="text-sm text-base-content/60 uppercase tracking-wide">Reviews</div>
+                        <div className="text-sm text-base-content/60  tracking-wide">Reviews</div>
                     </div>
                 </div>
 
                 {/* Clean Search Bar */}
-                <div className="max-w-2xl mx-auto mb-10">
-                    <div className="relative">
-                        <div className="flex items-center bg-base-200/80 border border-primary/40 rounded-lg p-4 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
-                            <FaSearch className="text-primary text-xl mr-3" />
-                            <input 
-                                type="text" 
-                                placeholder="Search 10,000+ games... (Coming Soon)"
-                                className="flex-1 bg-transparent text-base-content placeholder-base-content/50 outline-none"
-                                disabled
-                            />
-                            <MdTrendingUp className="text-secondary text-2xl ml-3" />
-                        </div>
-                    </div>
-                </div>
+                <Link to="/games" className='btn w-full mb-5 p-6 poetsen-one-regular  bg-linear-to-tr from-accent via-primary to-secondary   text-2xl  hover:shadow-secondary shadow-md duration-300'>
+                Explore Games 
+                </Link>
 
                 {/* Clean CTA Buttons */}
                 
@@ -97,7 +86,7 @@ const Hero = () => {
                         user ? (
                             <Link 
                         to="/dashboard" 
-                        className="px-10 py-4 bg-gradient-to-r from-primary to-accent hover:scale-105 hover:shadow-xl hover:shadow-primary/50 text-primary-content font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-3 rounded-lg"
+                        className="px-10 py-4 bg-linear-to-r creepster-regular from-primary to-accent  hover:shadow-xl hover:shadow-primary/50 text-primary-content font-bold  tracking-wider transition-all duration-300 flex items-center gap-3 rounded-lg"
                     >
                         <FaGamepad className="text-xl" />
                         Go to Dashboard
@@ -105,19 +94,13 @@ const Hero = () => {
                         ) : (
                             <Link 
                         to="/registration" 
-                        className="px-10 py-4 bg-gradient-to-r from-primary to-accent hover:scale-105 hover:shadow-xl hover:shadow-primary/50 text-primary-content font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-3 rounded-lg"
+                        className="px-10 py-4 bg-linear-to-r creepster-regular from-primary to-accent  hover:shadow-xl hover:shadow-primary/50 text-primary-content font-bold  tracking-wider transition-all duration-300 flex items-center gap-3 rounded-lg"
                     >
                         <FaGamepad className="text-xl" />
-                        Start Free
+                        Join Free
                     </Link>
                         )
                     }
-                    <a 
-                        href="#features" 
-                        className="px-10 py-4 bg-transparent border-2 border-primary rounded-lg hover:bg-primary/10 hover:scale-105 hover:shadow-xl hover:shadow-primary/30 text-primary hover:text-base-content font-bold uppercase tracking-wider transition-all duration-300"
-                    >
-                        Learn More
-                    </a>
                 </div>
 
                 {/* Simple Trust Indicators */}
@@ -137,8 +120,8 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* Bottom Gradient */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-base-100 to-transparent"></div>
+            {/* Bottom linear */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-base-100 to-transparent"></div>
         </div>
     );
 };
