@@ -3,15 +3,18 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash, FaGamepad, FaTrophy } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { auth } from "../../Firebase/firebase.init";
 import useAxios from "../../Hooks/useAxios";
 
 const LoginPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const provider = new GoogleAuthProvider();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -59,7 +62,6 @@ const LoginPage = () => {
     }
   };
 
-
   const handleEmailLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -69,7 +71,7 @@ const LoginPage = () => {
       setLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
       setLoading(false);
-      
+
       toast.success(`Login Successful! Welcome to GamersIntel,!`);
     } catch (error) {
       setLoading(false);
@@ -100,9 +102,7 @@ const LoginPage = () => {
               <h2 className="text-4xl font-black text-primary-content uppercase tracking-wider">
                 GamersIntel
               </h2>
-              <p className="text-base text-accent">
-                Your Gaming Memory System
-              </p>
+              <p className="text-base text-accent">Your Gaming Memory System</p>
             </div>
 
             {/* Decorative Corner Elements */}

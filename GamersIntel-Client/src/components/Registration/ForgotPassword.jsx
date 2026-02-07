@@ -11,6 +11,10 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
+   useEffect(() => {
+      window.scrollTo(0, 0);
+  }, []);
+  
   // Load saved email from session storage (if user came from login page)
   useEffect(() => {
     const savedEmail = sessionStorage.getItem("ResetEmail");

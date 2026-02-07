@@ -4,8 +4,8 @@ import {
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash, FaGamepad, FaTrophy, FaUser } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -13,7 +13,11 @@ import { auth } from "../../Firebase/firebase.init";
 import useAxios from "../../Hooks/useAxios";
 
 const RegistrationPage = () => {
-  const navigate = useNavigate();
+
+   useEffect(() => {
+      window.scrollTo(0, 0);
+  }, []);
+
   const provider = new GoogleAuthProvider();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);

@@ -4,7 +4,7 @@ import Navbar from '../components/Shared/Navbar';
 
 const HomeLayout = () => {
     return (
-        <div>
+        <div className='galdeano-regular'>
         <nav>
             <Navbar></Navbar>
         </nav>
